@@ -3,8 +3,7 @@ const apiSecret = `24f68406f9194188474a030416eadbcb`;
 const cityHolder = document.getElementById('cityHolder');
 
 /* this will pull the current location from the user's device */
-
-/* navigator.geolocation.getCurrentPosition(function(position) {
+navigator.geolocation.getCurrentPosition(function(position) {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
   const altitude = position.coords.altitude;
@@ -14,7 +13,7 @@ const cityHolder = document.getElementById('cityHolder');
   const speed = position.coords.speed;
   const timestamp = position.timestamp;
   openWeatherLL(lat, long);
-}); */
+});
 
 /* this calls the openweather api */
 function openWeatherLL(lat, long) {
@@ -48,7 +47,6 @@ function searchFunction() {
 function saveCitySearch(cityName) {
   let storageArray = [];
   storageArray = getCitySearch(); // making a string
-  console.log(typeof storageArray);
   storageArray.push(cityName);
   localStorage.setItem(`cityStorage`, JSON.stringify(storageArray));
 }
@@ -56,7 +54,6 @@ function saveCitySearch(cityName) {
 /* grabs the current cities in localStorage */
 function getCitySearch() {
   let cityArray = JSON.parse(localStorage.getItem(`cityStorage`));
-  console.log(`getCitySearch called`);
   return cityArray;
 }
 
