@@ -1,0 +1,58 @@
+/******************/
+/*   variables /  */
+/* color scheming */
+/******************/
+:root {
+  --pink: hotpink;
+  --pink-hover: deeppink;
+  --green-main: #5BBD86;
+  --blue-main: #666CB8;
+  --orange-main: #FF977B;
+  --yellow-main: #FFDC7B;
+  --white: #fff8e7;
+  --background: rgb(19, 19, 19);
+}
+
+/**************/
+/* resets lol */
+/**************/
+
+/* 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: #fff8e7;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: default;
+}
+ */
+
+/*
+        _____
+    ,-:` \;',`'-, 
+  .'-;_,;  ':-;_,'.
+ /;   '/    ,  _`.-\
+| '`. (`     /` ` \`|
+|:.  `\`-.   \_   / |
+|     (   `,  .`\ ;'|
+ \     | .'     `-'/
+  `.   ;/        .'
+    `'-._____. `
+*/
+
+/****************/
+/* global stuff */
+/****************/
+
+nav {
+  position: relative;
+}
+
+/* ************* */
+/* custom thangs */
+/* ************* */
+
+#searchBtn {
+  width: 100%;
+}
