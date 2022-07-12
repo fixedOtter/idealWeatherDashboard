@@ -1,6 +1,11 @@
 /* declarations */
 const apiSecret = `24f68406f9194188474a030416eadbcb`;
 const cityHolder = document.getElementById('cityHolder');
+const cityTitleEl = document.getElementById(`cityTitle`);
+const currentTempEl = document.getElementById(`temperature`);
+const currentHumidEl = document.getElementById(`humidity`);
+const currentWindEl = document.getElementById(`wind-speed`);
+const currentUVEl = document.getElementById(`UV-index`);
 
 /* this will pull the current location from the user's device */
 /* navigator.geolocation.getCurrentPosition(function(position) {
@@ -15,6 +20,31 @@ const cityHolder = document.getElementById('cityHolder');
   openWeatherLL(lat, long);
 }); */
 
+/* this calls the openweather api to get lat + long */
+function openWeatherCity(cityName) {
+  // GET-ing from the openweather api
+  $.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiSecret}`)
+  // hands shaken; data taken
+  .then(function(data) {
+    // grabs current date data
+    const currentDate = new Date(data.dt * 1000);
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
+    // change title element data
+    cityTitleEl.innerHTML = `${data.name}, ${month}/${day}/${year}`;
+    currentTempEl.innerHTML = `Temperature: ${data.main.temp}&#176F`;
+    currentHumidEl.innerHTML = `Humidity: ${data.main.humidity}%`;
+    currentWindEl.innerHTML = `Wind Speed: ${data.wind.speed} MPH`;
+    // grabs the UV index
+    let lat = data.coord.lat;
+    let long = data.coord.lon;
+    openWeatherLLUVI(lat,long);
+
+    console.log(data);
+  });
+}
+
 /* this calls the openweather api once the lat and long has been grabbed */
 function openWeatherLL(lat, long) {
   // thanks JD!
@@ -25,13 +55,22 @@ function openWeatherLL(lat, long) {
   });
 }
 
-/* this calls the openweather api to get lat + long */
-function openWeatherCity(cityName) {
-  // GET-ing from the openweather api
-  $.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiSecret}`)
+/* this calls the openweather to get UVI after we have lat + long */
+function openWeatherLLUVI(lat, long) {
+  $.get(`https://api.openweathermap.org/data/2.5/uvi/forecast?lat=${lat}&lon=${long}&appid=${apiSecret}&cnt=1`)
   // hands shaken; data taken
   .then(function(data) {
-    console.log(data);
+    //TODO: fix this UV index - try to use picnic a button?
+    let UVIndex = document.createElement("a");
+    console.log(data);      
+    // if else for creating the index
+    if (data[0].value < 4 ) {
+        UVIndex.setAttribute("class", "button success");
+    } else if (data[0].value < 8) {
+        UVIndex.setAttribute("class", "button warning");
+    } else {
+        UVIndex.setAttribute("class", "button error");
+    }
   });
 }
 
@@ -44,10 +83,13 @@ function openWeatherCity(cityName) {
 function searchFunction() {
   // grabs the input from the search field
   let userInput = $('#citySearch').val();
+  userInput = userInput.replace(/[^a-z,A-Z ]/g, '');
   // NTH: validate user input?
+  // saves userinput to the localstorage
   saveCitySearch(userInput);
+  // refreshes the displayed cities
   displayCitySearch();
-  console.log(userInput);
+  // finds the weather for the userinput
   openWeatherCity(userInput);
 }
 
