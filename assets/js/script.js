@@ -3,7 +3,7 @@ const apiSecret = `24f68406f9194188474a030416eadbcb`;
 const cityHolder = document.getElementById('cityHolder');
 
 /* this will pull the current location from the user's device */
-navigator.geolocation.getCurrentPosition(function(position) {
+/* navigator.geolocation.getCurrentPosition(function(position) {
   const lat = position.coords.latitude;
   const long = position.coords.longitude;
   const altitude = position.coords.altitude;
@@ -13,18 +13,27 @@ navigator.geolocation.getCurrentPosition(function(position) {
   const speed = position.coords.speed;
   const timestamp = position.timestamp;
   openWeatherLL(lat, long);
-});
+}); */
 
-/* this calls the openweather api */
+/* this calls the openweather api once the lat and long has been grabbed */
 function openWeatherLL(lat, long) {
   // thanks JD!
   $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiSecret}`)
+  // hands shaken; data taken
   .then(function(data) {
-    // then I can do something with the data
-    console.log(data)
-    });
+    console.log(data);
+  });
 }
 
+/* this calls the openweather api to get lat + long */
+function openWeatherCity(cityName) {
+  // GET-ing from the openweather api
+  $.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiSecret}`)
+  // hands shaken; data taken
+  .then(function(data) {
+    console.log(data);
+  });
+}
 
 /* ************************************ */
 /* NTH: specify kind of value for temp? */
@@ -35,12 +44,11 @@ function openWeatherLL(lat, long) {
 function searchFunction() {
   // grabs the input from the search field
   let userInput = $('#citySearch').val();
-  // TODO: validate user input?
+  // NTH: validate user input?
   saveCitySearch(userInput);
   displayCitySearch();
   console.log(userInput);
-
-  //TODO: call api to get lat and long from city name
+  openWeatherCity(userInput);
 }
 
 /* saves user input to the local storage */
@@ -69,9 +77,24 @@ function displayCitySearch() {
     <article class="card">
     <header>
       <h3>${cityArray[i]}</h3>
-      <button class="dangerous"><i class="fa-solid fa-recycle"></i></button>
     </header>
   </article>
+    `);
+  }
+}
+
+/* this will display the forcast for each dailydiv */
+function displayForecast() {
+  // this clears what's currently there
+  for (let i = 0; i < 8; i++) {
+    $(`daily${i}`).innerHTML = '';
+  }
+
+  // this inserts the data for each dailydiv
+  for (let i = 0; i < array.length; i++) {
+    document.querySelector(`daily${i}`).insertAdjacentHTML('afterBegin', `
+    <h3>%insertDate%</h3>
+    
     `);
   }
 }
