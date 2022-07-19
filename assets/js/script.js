@@ -99,7 +99,7 @@ const openWeatherLL = (lat, long, cityName) => {
       currDivEl.insertAdjacentHTML('afterBegin', `
       <p>${forecastMonth}/${forecastDay}/${forecastYear}</p>
       <img src="https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png" alt="${data.daily[i].weather[0].description}">
-      <p>Temp: ${data.daily[i].temp.day} &#176F</p>
+      <p>Temp: ${data.daily[i].temp.day}&#176F</p>
       <p>Humidity: ${data.daily[i].humidity}%</p>
       `); 
     }
