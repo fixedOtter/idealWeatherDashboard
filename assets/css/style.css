@@ -47,19 +47,20 @@
 /* global stuff */
 /****************/
 
-nav {
+/* nav {
   position: relative;
-}
+} */
 
 /* ************* */
 /* custom thangs */
 /* ************* */
 
-#searchBtn {
+/* #searchBtn {
   width: 100%;
 }
 .flex {
   margin-left: 0%;
+
 }
 .card p {
   padding-right: 0%;
@@ -74,4 +75,23 @@ main {
 }
 .center {
   margin: 0 auto;
+} */
+.flex {
+  margin-left: 0%;
+}
+.flex * {
+  padding-left: 0%;
+}
+#cityTitleHolder {
+  padding-left: 2em;
+}
+.main #mainSect {
+  max-width: 88%;
+  margin: 0 auto;
+  padding: 80px 0 0;
+}
+@media screen and (min-width: 800px) {
+  .main #mainSect {
+    max-width: 69%;
+  }
 }
