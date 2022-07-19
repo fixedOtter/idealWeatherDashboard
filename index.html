@@ -27,30 +27,34 @@
     </a>
   </nav>
   
-  <!-- this is the main body really -->
-  <!-- <div class="flex one two-800"> -->
-  <main class="flex center one six-800">
-    <!-- search aside element -->
-    <div id="searchBox" class="full third-800 flex one three-800">
-      <!-- search content bar -->
-      <label><input id="citySearch" type="cityName" placeholder="City Name"></label>
-      <input id="searchBtn" value="Search" type="submit">
-      <button id="currentLocationBtn"><i class="fa-solid fa-location-dot"></i> Your current location</button>
-      <button id="searchHistoryClearBtn" class="dangerous"><i class="fa-solid fa-recycle"></i> Clear search history</button>
-      
-      <!-- this stores all the previous search elements -->
-      <div id="cityHolder">
-        <article class="card">
-          <header>
-            <h3>please enter a city name :)</h3>
-          </header>
-        </article>
+  <!-- this is the main holder -->
+  <main class="main">
+    <section id="mainSect" class="flex center one six-800">
+
+      <!-- search aside element -->
+      <div id="searchBox" class="full third-800 flex one two-800">
+        <!-- search content bar -->
+        <label><input id="citySearch" type="cityName" placeholder="City Name"></label>
+        <input id="searchBtn" class="full" value="Search" type="submit">
+        <div class="full flex one two-800">
+          <button id="currentLocationBtn"><i class="fa-solid fa-location-dot"></i> Your current location</button>
+          <button id="searchHistoryClearBtn" class="error"><i class="fa-solid fa-recycle"></i> Clear search history</button>
+        </div>
+
+        <!-- this stores all the previous search elements -->
+        <div id="cityHolder" class="full">
+          <article class="card">
+            <header>
+              <h3>please enter a city name :)</h3>
+            </header>
+          </article>
+        </div>
+
       </div>
-    </div>
     <!-- main article with current weather and forecast -->
-    <div class="full two-third-800 flex one eight-800">
+    <div class="full two-third-800 flex">
       <!-- TODO insert current weather and then week-forcast div's -->
-      <section class="full">
+      <section id="cityTitleHolder" class="full">
         <h1 id="cityTitle">Please enter a city name</h1>
         <p id="temperature"></p>
         <p id="humidity"></p>
@@ -78,8 +82,8 @@
         </div>
       </section>
     </div>
+  </section>
   </main>
-  <!-- </div> -->
   
 </body>
 </html>
