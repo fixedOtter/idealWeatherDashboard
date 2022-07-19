@@ -14,6 +14,8 @@
   <script src="assets/js/jquery-3.6.0.min.js"></script>
   <!-- luxon script -->
   <script src="assets/js/luxon.min.js"></script>
+  <!-- my actual js script -->
+  <script src="assets/js/script.js" defer></script>
   <title>Weather Dashboard</title>
 </head>
 <body>
@@ -26,36 +28,38 @@
   </nav>
   
   <!-- this is the main body really -->
-  <div class="flex one two-800">
+  <!-- <div class="flex one two-800"> -->
+  <main class="flex center one six-800">
     <!-- search aside element -->
-    <div id="searchBox" class="full fourth-800">
+    <div id="searchBox" class="full third-800 flex one three-800">
       <!-- search content bar -->
       <label><input id="citySearch" type="cityName" placeholder="City Name"></label>
       <input id="searchBtn" value="Search" type="submit">
+      <button id="currentLocationBtn"><i class="fa-solid fa-location-dot"></i> Your current location</button>
+      <button id="searchHistoryClearBtn" class="dangerous"><i class="fa-solid fa-recycle"></i> Clear search history</button>
+      
       <!-- this stores all the previous search elements -->
       <div id="cityHolder">
         <article class="card">
           <header>
-            <h3>city name</h3>
-            
+            <h3>please enter a city name :)</h3>
           </header>
         </article>
       </div>
-      <button id="searchHistoryClearBtn" class="dangerous"><i class="fa-solid fa-recycle"></i> Clear search history</button>
     </div>
     <!-- main article with current weather and forecast -->
-    <div class="">
+    <div class="full two-third-800 flex one eight-800">
       <!-- TODO insert current weather and then week-forcast div's -->
-      <section>
-        <h1 id="cityTitle">city name, date</h1>
+      <section class="full">
+        <h1 id="cityTitle">Please enter a city name</h1>
         <p id="temperature"></p>
         <p id="humidity"></p>
         <p id="wind-speed"></p>
         <p id="UV-index"></p>
-        
       </section>
+
       <!-- article holding the forecast -->
-      <section class="flex one eight-800"> <!-- NTH toy with sizing of these elements? -->
+      <section class="full flex one eight-800"> <!-- NTH toy with sizing of these elements? -->
         <div id="daily0" class="card">
         </div>
         <div id="daily1" class="card">
@@ -74,12 +78,8 @@
         </div>
       </section>
     </div>
-  </div>
+  </main>
+  <!-- </div> -->
   
-  
-
-
-  <!-- my actual js script -->
-  <script src="assets/js/script.js"></script>
 </body>
 </html>
