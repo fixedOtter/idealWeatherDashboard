@@ -17,7 +17,7 @@
 /* resets lol */
 /**************/
 
-/* 
+/*
 * {
   box-sizing: border-box;
   padding: 0;
@@ -30,7 +30,7 @@
 
 /*
         _____
-    ,-:` \;',`'-, 
+    ,-:` \;',`'-,
   .'-;_,;  ':-;_,'.
  /;   '/    ,  _`.-\
 | '`. (`     /` ` \`|
@@ -55,4 +55,21 @@ nav {
 
 #searchBtn {
   width: 100%;
+}
+.flex {
+  margin-left: 0%;
+}
+.card p {
+  padding-right: 0%;
+}
+.card .cityHistBtn {
+  padding: .42rem;
+}
+
+main {
+  max-width: 70%;
+  margin: 0 auto;
+}
+.center {
+  margin: 0 auto;
 }
